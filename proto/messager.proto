@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package messager;
+
+option go_package = "./pb";
+
+service ChatService {
+    rpc GetChats (GetChatsRequest) returns (stream ChatResponse);
+}
+
+message UUID {
+    string value = 1;
+}
+
+message URL {
+    string value = 1;
+}
+
+message GetChatsRequest {
+    UUID userId = 1;
+}
+
+message ChatResponse {
+    UUID id = 1;
+    int32 type = 2;
+    string name = 3;
+    URL logo = 4;
+}
