@@ -1,0 +1,35 @@
+{
+  "name": "@ram1ck/chat-grpc-ts",
+  "version": "0.0.8",
+  "description": "messager gen code for ts",
+  "license": "ISC",
+  "author": "ram1ck",
+  "type": "module",
+  "main": "./dist/messager_pb.js",
+  "types": "./dist/messager_pb.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/messager_pb.d.ts",
+      "import": "./dist/messager_pb.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf ts dist",
+    "gen": "npm run clean && buf generate",
+    "build": "tsc",
+    "prepublishOnly": "npm run gen && npm run build"
+  },
+  "dependencies": {
+    "@bufbuild/protobuf": "^2.14.1",
+    "rxjs": "^7.0.0"
+  },
+  "devDependencies": {
+    "@bufbuild/buf": "^1.72.0",
+    "@bufbuild/protoc-gen-es": "^2.14.1",
+    "rimraf": "^6.1.3",
+    "typescript": "^5.0.0"
+  }
+}
